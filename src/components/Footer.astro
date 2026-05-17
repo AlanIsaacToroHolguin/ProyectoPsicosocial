@@ -1,0 +1,49 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="relative bg-ink-900 text-cream-100/85">
+  <div class="container-edit grid gap-12 py-20 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-terracotta-500 text-cream-50">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10z"/></svg>
+        </span>
+        <div>
+          <div class="text-[10px] uppercase tracking-[0.22em] text-clay-300">Proyecto psicosocial</div>
+          <div class="font-serif text-lg text-cream-50">Latidos de la escuela</div>
+        </div>
+      </div>
+      <p class="mt-6 max-w-md text-sm leading-relaxed text-cream-100/70">
+        Una iniciativa universitaria construida con la comunidad de la
+        Institución Educativa Presbítero Antonio Baena Salazar, en Sabaneta, Colombia.
+      </p>
+    </div>
+
+    <div class="md:col-span-3">
+      <div class="text-[10px] uppercase tracking-[0.22em] text-clay-300">Navegación</div>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="#proyecto"     class="hover:text-terracotta-400">El proyecto</a></li>
+        <li><a href="#observando"   class="hover:text-terracotta-400">Qué observamos</a></li>
+        <li><a href="#fases"        class="hover:text-terracotta-400">Las 5 fases</a></li>
+        <li><a href="#metodologias" class="hover:text-terracotta-400">Metodologías</a></li>
+        <li><a href="#impacto"      class="hover:text-terracotta-400">Impacto</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-4">
+      <div class="text-[10px] uppercase tracking-[0.22em] text-clay-300">Contacto</div>
+      <p class="mt-4 text-sm leading-relaxed text-cream-100/80">
+        Estudiantes de Psicología · Octavo semestre <br/>
+        Sabaneta, Antioquia · Colombia <br/>
+        <a href="mailto:contacto@latidosdelaescuela.co" class="hover:text-terracotta-400">contacto@latidosdelaescuela.co</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-cream-50/10">
+    <div class="container-edit flex flex-col items-start justify-between gap-3 py-6 text-xs text-cream-100/55 sm:flex-row sm:items-center">
+      <div>© {year} · Latidos de la escuela · I.E. Presbítero Antonio Baena Salazar</div>
+      <div class="italic font-serif">Escuchar también es cuidar.</div>
+    </div>
+  </div>
+</footer>

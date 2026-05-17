@@ -1,0 +1,114 @@
+---
+import MetodologiaCard from './MetodologiaCard.tsx';
+
+const techniques = [
+  {
+    name: 'Cartografía social participativa',
+    desc: 'Los estudiantes representan su percepción del entorno escolar mediante la elaboración de un mapa, ubicando situaciones, espacios y dinámicas relevantes de la institución.',
+    // Fuente: https://unsplash.com/es/fotos/wusOJ-2uY6w
+    img:  'https://unsplash.com/photos/wusOJ-2uY6w/download?force=true&w=1400',
+    tag:  'Mirar el territorio',
+    objective:  'Identificar los factores de riesgo desde la percepción de la comunidad educativa.',
+    population: 'Miembros de la comunidad educativa, principalmente estudiantes.',
+    moments: [
+      'Organización de los grupos de trabajo, promoviendo intercambio de ideas.',
+      'Entrega del material: un plano sencillo de la institución por grupo.',
+      'Identificación y ubicación de espacios: zonas de riesgo, zonas seguras y espacios de convivencia positiva.',
+      'Construcción colectiva del mapa con las dinámicas observadas.',
+      'Socialización: cada grupo presenta su mapa y reflexiona con los demás.',
+    ],
+    resources: ['Cartulinas', 'Marcadores', 'Stickers'],
+    time: [
+      'Explicación · 10 min',
+      'Desarrollo en grupos · 30–40 min',
+      'Socialización · 20 min',
+    ],
+    result: 'Identificación visual de riesgos psicosociales presentes en los espacios de la institución.',
+    risks:  ['Baja participación', 'Ubicación poco clara de espacios', 'Interpretaciones distintas', 'Limitaciones de tiempo'],
+  },
+  {
+    name: 'Mural de situaciones',
+    desc: 'Los estudiantes expresan a través de representaciones gráficas y escritas las situaciones que viven en su entorno escolar, construyendo significados colectivos.',
+    img:  '/mural.png',
+    tag:  'Hacer visible lo invisible',
+    objective:  'Identificar situaciones, experiencias y problemáticas presentes en la comunidad educativa.',
+    population: 'Miembros de la comunidad educativa, principalmente estudiantes.',
+    moments: [
+      'Adecuación del espacio donde se construirá el mural (pared o cartelera).',
+      'Expresión individual mediante dibujos, palabras o frases.',
+      'Socialización en pequeños grupos para dialogar y reflexionar.',
+      'Construcción colectiva: cada grupo plasma una propuesta conjunta.',
+      'Elaboración del mural final con la integración de las producciones grupales.',
+    ],
+    resources: ['Papelógrafos o cartulina grande', 'Marcadores', 'Colores y lápices', 'Cinta o pegante', 'Hojas blancas', 'Revistas (opcional)'],
+    time: [
+      'Explicación · 10 min',
+      'Trabajo individual · 15 min',
+      'Trabajo grupal · 25–30 min',
+      'Socialización · 20 min',
+    ],
+    result: 'Mural colectivo que refleja experiencias y percepciones, visibilizando aspectos que influyen en el bienestar de la comunidad.',
+    risks:  ['Baja participación', 'Dificultad para expresar ideas', 'Desorganización grupal', 'Limitaciones de tiempo'],
+  },
+  {
+    name: 'Taller pedagógico',
+    desc: 'Encuentros guiados de reflexión e intercambio de experiencias entre los participantes, orientados a identificar situaciones relevantes del contexto institucional.',
+    img:  '/taller.png',
+    tag:  'Aprender juntos',
+    objective:  'Identificar percepciones y situaciones de la comunidad educativa mediante el trabajo colaborativo.',
+    population: 'Miembros de la comunidad educativa.',
+    moments: [
+      'Encuadre y acuerdos: presentación, propósito, normas de participación y ambiente de confianza.',
+      'Recolección de datos: actividad central (mural o dinámica participativa) y registro mediante escritos, dibujos o palabras clave.',
+      'Plenaria y conclusiones: socialización, identificación de recurrencias y síntesis de hallazgos.',
+    ],
+    resources: ['Hojas blancas o formatos', 'Marcadores y lápices', 'Papelógrafo o tablero', 'Cinta o pegante', 'Instrumentos guía del mapeo'],
+    time: [
+      'Encuadre · 10 min',
+      'Recolección · 20–30 min',
+      'Plenaria · 20 min',
+      'Conclusiones · 10–15 min',
+    ],
+    result: 'Espacio de participación que permite identificar situaciones relevantes y propicia una reflexión colectiva sobre el bienestar institucional.',
+    risks:  ['Baja participación', 'Dificultad para expresar ideas', 'Desviación del tema', 'Limitaciones de tiempo'],
+  },
+];
+---
+<section id="metodologias" class="relative bg-cream-100 py-20 md:py-28 grain">
+  <div class="container-edit">
+    <div class="max-w-3xl reveal-stagger">
+      <span class="eyebrow reveal">Las herramientas que usamos</span>
+      <h2 class="reveal h-display mt-5 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.08]">
+        Tres técnicas participativas, <br/>
+        un mismo principio: <em class="not-italic text-terracotta-500">investigar con la escuela</em>.
+      </h2>
+      <p class="reveal mt-5 text-lg text-ink-700 leading-relaxed">
+        Cada técnica tiene su propio objetivo, momentos, recursos y tiempos.
+        Aquí compartimos cómo las aplicamos paso a paso para que el proceso sea transparente.
+      </p>
+    </div>
+
+    <div class="reveal-stagger mt-12 grid gap-8 lg:grid-cols-3 items-start">
+      {techniques.map((t, i) => (
+        <div class="reveal">
+          <MetodologiaCard t={t} index={i} client:visible />
+        </div>
+      ))}
+    </div>
+
+    <!-- Banda de principios -->
+    <div class="reveal mt-14 grid gap-6 rounded-[2rem] border border-cream-200 bg-cream-50 p-8 md:grid-cols-4 md:p-10">
+      {[
+        ['Escucha activa',     'Tiempo, presencia y silencio.'],
+        ['Trabajo colectivo',  'Pensar y crear con otros.'],
+        ['Expresión emocional','Permitir que el sentir tenga lugar.'],
+        ['Ética del cuidado',  'Acompañar sin invadir.'],
+      ].map(([t, d]) => (
+        <div>
+          <div class="font-serif text-xl text-ink-900">{t}</div>
+          <div class="mt-2 text-sm text-ink-700/80">{d}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

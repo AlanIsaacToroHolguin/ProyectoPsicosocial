@@ -1,0 +1,222 @@
+---
+const links = [
+  { href: '#proyecto',   label: 'El proyecto' },
+  { href: '#objetivos',  label: 'Objetivos' },
+  { href: '#equipo',     label: 'El equipo' },
+  { href: '#fases',      label: 'Cómo lo hacemos' },
+  { href: '#bitacora',   label: 'Bitácora' },
+];
+---
+<style>
+  /* ── Estado base (sobre hero oscuro): texto claro ── */
+  #site-nav {
+    transition: background-color .4s ease, backdrop-filter .4s ease, border-color .4s ease;
+  }
+  #site-nav .brand-eyebrow { color: rgba(232, 201, 168, 0.95); }  /* clay-300 */
+  #site-nav .brand-name    { color: #FDFBF7; }                     /* cream-50 */
+  #site-nav .nav-link      { color: rgba(250, 245, 236, 0.85); }   /* cream-100/85 */
+  #site-nav .burger        { color: #FDFBF7; }
+  #site-nav .nav-cta {
+    background-color: rgba(253, 251, 247, 0.95);
+    color: #1A1410;
+    box-shadow: 0 8px 24px -10px rgba(0,0,0,.35);
+  }
+  #site-nav .nav-cta:hover { background-color: #C9624B; color: #FDFBF7; }
+
+  /* ── Estado scrolled (sobre fondo claro): texto oscuro ── */
+  #site-nav.is-scrolled {
+    background-color: rgba(253, 251, 247, 0.92);
+    backdrop-filter: saturate(140%) blur(14px);
+    border-color: rgba(60,40,25,0.08);
+  }
+  #site-nav.is-scrolled .brand-eyebrow { color: #9E5F3A; }   /* clay-600 */
+  #site-nav.is-scrolled .brand-name    { color: #1A1410; }   /* ink-900 */
+  #site-nav.is-scrolled .nav-link      { color: #3D3328; }   /* ink-700 */
+  #site-nav.is-scrolled .burger        { color: #1A1410; }
+  #site-nav.is-scrolled .nav-cta {
+    background-color: #1A1410;
+    color: #FDFBF7;
+    box-shadow: 0 20px 60px -25px rgba(60, 40, 25, 0.25);
+  }
+  #site-nav.is-scrolled .nav-cta:hover { background-color: #C9624B; }
+
+  /* Hover underline + active indicator */
+  .nav-link {
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1.5px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .45s cubic-bezier(.22,.61,.36,1);
+  }
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+  #site-nav .nav-link.is-active           { color: #FFCDB8; }   /* terracotta-400 claro */
+  #site-nav.is-scrolled .nav-link.is-active { color: #C9624B; } /* terracotta-500 */
+
+  /* Mobile drawer */
+  #mobile-drawer {
+    transform: translateX(100%);
+    transition: transform .5s cubic-bezier(.22,.61,.36,1);
+  }
+  #mobile-drawer.is-open { transform: translateX(0); }
+  #mobile-backdrop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease;
+  }
+  #mobile-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+  /* Burger animation */
+  .burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform .35s cubic-bezier(.22,.61,.36,1), opacity .25s;
+  }
+  .burger span + span { margin-top: 6px; }
+  .burger.is-open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .burger.is-open span:nth-child(2) { opacity: 0; }
+  .burger.is-open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+</style>
+
+<header id="site-nav" class="fixed inset-x-0 top-0 z-50 border-b border-transparent">
+  <div class="container-edit flex items-center justify-between py-5">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="relative inline-flex h-9 w-9 items-center justify-center rounded-full bg-terracotta-500 text-cream-50 shadow-soft transition-transform group-hover:scale-105">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10z"/>
+        </svg>
+      </span>
+      <span class="leading-tight">
+        <span class="brand-eyebrow block text-[10px] uppercase tracking-[0.24em]">Proyecto psicosocial</span>
+        <span class="brand-name block font-serif text-lg">Latidos de la escuela</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9">
+      {links.map((l) => (
+        <a href={l.href} data-nav-link={l.href} class="nav-link text-sm transition-colors">
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="#bitacora" class="nav-cta hidden md:inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-[13px] font-medium transition-all duration-300 hover:-translate-y-[2px]">
+        Lee la bitácora
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+
+      <button id="burger" type="button" aria-label="Abrir menú" class="burger lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors">
+        <div>
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div id="mobile-backdrop" class="fixed inset-0 z-40 bg-ink-900/40 backdrop-blur-sm lg:hidden"></div>
+<aside id="mobile-drawer" class="fixed right-0 top-0 z-50 h-full w-[82%] max-w-sm bg-cream-50 shadow-2xl lg:hidden">
+  <div class="flex h-full flex-col p-7">
+    <div class="flex items-center justify-between">
+      <span class="text-[10px] uppercase tracking-[0.24em] text-clay-600">Navegación</span>
+      <button id="burger-close" type="button" aria-label="Cerrar menú" class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-900 hover:bg-cream-100 transition-colors">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="mt-10 flex flex-col gap-1">
+      {links.map((l, i) => (
+        <a
+          href={l.href}
+          data-drawer-link
+          class="group flex items-baseline gap-4 border-b border-cream-200 py-4 transition-colors hover:text-terracotta-500"
+        >
+          <span class="font-serif text-sm text-clay-600">{String(i + 1).padStart(2, '0')}</span>
+          <span class="font-serif text-2xl text-ink-900 group-hover:text-terracotta-500 transition-colors">{l.label}</span>
+        </a>
+      ))}
+    </nav>
+
+    <a href="#bitacora" data-drawer-link class="btn-primary mt-auto !justify-center">
+      Lee la bitácora
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</aside>
+
+<script>
+  // ── Active section indicator via IntersectionObserver ──
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+  const idToLink = new Map<string, HTMLAnchorElement>();
+  navLinks.forEach((a) => {
+    const href = a.getAttribute('href');
+    if (href) idToLink.set(href.replace('#', ''), a);
+  });
+
+  const sectionEls = Array.from(idToLink.keys())
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => Boolean(el));
+
+  if (sectionEls.length) {
+    const setActive = (id: string) => {
+      idToLink.forEach((a, key) => a.classList.toggle('is-active', key === id));
+    };
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry closest to the top of the viewport.
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+    );
+    sectionEls.forEach((el) => sectionObserver.observe(el));
+  }
+
+  // ── Mobile drawer ──
+  const drawer    = document.getElementById('mobile-drawer');
+  const backdrop  = document.getElementById('mobile-backdrop');
+  const burger    = document.getElementById('burger');
+  const burgerX   = document.getElementById('burger-close');
+
+  const openDrawer  = () => {
+    drawer?.classList.add('is-open');
+    backdrop?.classList.add('is-open');
+    burger?.classList.add('is-open');
+    document.documentElement.style.overflow = 'hidden';
+  };
+  const closeDrawer = () => {
+    drawer?.classList.remove('is-open');
+    backdrop?.classList.remove('is-open');
+    burger?.classList.remove('is-open');
+    document.documentElement.style.overflow = '';
+  };
+
+  burger?.addEventListener('click', () => {
+    drawer?.classList.contains('is-open') ? closeDrawer() : openDrawer();
+  });
+  burgerX?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+  document.querySelectorAll('[data-drawer-link]').forEach((a) => {
+    a.addEventListener('click', closeDrawer);
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>

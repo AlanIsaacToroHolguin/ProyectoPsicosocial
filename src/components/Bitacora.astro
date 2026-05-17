@@ -1,0 +1,78 @@
+---
+// Reemplaza estas entradas con notas reales del equipo.
+const entries = [
+  {
+    fecha:  'Semana 1 · Marzo',
+    fase:   'Fase 01 · Reconocimiento',
+    titulo: 'La primera vez que cruzamos la puerta',
+    texto:  'Llegamos sin formularios. Solo a saludar, recorrer pasillos y conversar con la coordinación. Lo más valioso del día fue notar cómo la institución también nos estaba leyendo a nosotros.',
+  },
+  {
+    fecha:  'Semana 3 · Marzo',
+    fase:   'Fase 01 · Reconocimiento',
+    titulo: 'Encuentros con docentes',
+    texto:  'Tres reuniones cortas con maestros de distintos grados. Pedimos que nos contaran qué les preocupa, no qué quieren que estudiemos. Aparecieron temas que ningún diagnóstico previo había nombrado.',
+  },
+  {
+    fecha:  'Semana 5 · Abril',
+    fase:   'Fase 02 · Exploración',
+    titulo: 'Recorrido por los espacios',
+    texto:  'Caminamos la escuela con los estudiantes mayores como guías. Nos mostraron sus lugares seguros y los que evitan. Fue la primera vez que algo de lo invisible empezó a tener coordenadas.',
+  },
+  {
+    fecha:  'Esta semana',
+    fase:   'Fase 02 · Exploración',
+    titulo: 'Lo que estamos haciendo ahora',
+    texto:  'Estamos en aulas con grupos pequeños, escuchando relatos cotidianos sobre amistades, redes sociales y emociones. Tomamos notas, no respuestas. Cada conversación queda abierta.',
+    actual: true,
+  },
+];
+---
+<section id="bitacora" class="relative bg-cream-50 py-20 md:py-28 grain">
+  <div class="blob bg-sage-300/30 w-[420px] h-[420px] -top-20 right-[-100px] animate-blob"></div>
+
+  <div class="container-edit relative">
+    <div class="max-w-3xl reveal-stagger">
+      <span class="eyebrow reveal">Bitácora de campo</span>
+      <h2 class="reveal h-display mt-5 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.06]">
+        Lo que vamos viviendo, <br/>
+        <em class="not-italic text-terracotta-500">en primera persona</em>.
+      </h2>
+      <p class="reveal mt-5 text-lg text-ink-700 leading-relaxed">
+        Notas breves del equipo a lo largo del recorrido. No buscan ser exhaustivas:
+        son una forma de hacer transparente cómo se va construyendo el mapa, semana a semana.
+      </p>
+    </div>
+
+    <!-- Timeline vertical -->
+    <ol class="reveal-stagger relative mt-12 border-l border-cream-200 pl-8 md:pl-12 md:ml-6">
+      {entries.map((e) => (
+        <li class="reveal relative mb-12 last:mb-0">
+          <!-- dot -->
+          <span class={[
+            'absolute -left-[37px] md:-left-[53px] flex h-5 w-5 items-center justify-center rounded-full border-4 border-cream-50',
+            e.actual ? 'bg-terracotta-500' : 'bg-clay-400',
+          ].join(' ')}>
+            {e.actual && (
+              <span class="absolute inline-flex h-5 w-5 animate-ping rounded-full bg-terracotta-500 opacity-60"></span>
+            )}
+          </span>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-clay-600">{e.fecha}</span>
+            <span class="text-[11px] uppercase tracking-[0.22em] text-ink-700/50">·</span>
+            <span class="text-[11px] uppercase tracking-[0.22em] text-ink-700/70">{e.fase}</span>
+            {e.actual && (
+              <span class="rounded-full bg-terracotta-500 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-cream-50">
+                Ahora
+              </span>
+            )}
+          </div>
+
+          <h3 class="mt-3 font-serif text-2xl leading-tight text-ink-900">{e.titulo}</h3>
+          <p class="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-700">{e.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

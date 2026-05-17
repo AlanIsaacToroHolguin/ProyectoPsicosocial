@@ -1,0 +1,38 @@
+---
+import HeroBackdrop from './HeroBackdrop.tsx';
+import HeroContent  from './HeroContent.tsx';
+
+// Grupo de niños pequeños sentados en un escritorio
+// Fuente: https://unsplash.com/es/fotos/6hl__HAWP4w
+const heroImg = 'https://unsplash.com/photos/6hl__HAWP4w/download?force=true&w=2400';
+---
+<section id="top" class="relative min-h-[100svh] w-full overflow-hidden bg-ink-900 text-cream-50 grain">
+  <HeroBackdrop src={heroImg} client:load />
+
+  <!-- Floating blob accents -->
+  <div class="blob bg-terracotta-500/40 w-[420px] h-[420px] -top-20 -left-24 animate-blob"></div>
+  <div class="blob bg-clay-400/30 w-[360px] h-[360px] top-1/3 right-[-120px] animate-blob" style="animation-delay:-6s"></div>
+
+  <HeroContent client:load />
+
+  <!-- Scroll indicator -->
+  <a
+    href="#proyecto"
+    aria-label="Desplazar para conocer el proyecto"
+    class="group absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-3 text-cream-100/80 hover:text-cream-50 transition-colors"
+  >
+    <span class="text-[10px] uppercase tracking-[0.32em]">Desplazar</span>
+    <span class="relative flex h-10 w-6 items-start justify-center overflow-hidden rounded-full border border-cream-100/40 group-hover:border-cream-100/80 transition-colors">
+      <span class="mt-2 block h-2 w-[2px] rounded-full bg-cream-100/70 animate-[scrollDot_2s_ease-in-out_infinite]"></span>
+    </span>
+  </a>
+
+  <style>
+    @keyframes scrollDot {
+      0%   { transform: translateY(0);   opacity: 0; }
+      30%  { opacity: 1; }
+      80%  { transform: translateY(14px); opacity: 0; }
+      100% { transform: translateY(0);   opacity: 0; }
+    }
+  </style>
+</section>

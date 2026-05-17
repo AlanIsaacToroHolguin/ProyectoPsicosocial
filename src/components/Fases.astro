@@ -1,0 +1,28 @@
+---
+import Fases from './Fases.tsx';
+---
+<section id="fases" class="relative bg-cream-50 py-20 md:py-28 grain">
+  <div class="blob bg-terracotta-400/25 w-[480px] h-[480px] top-10 -left-32 animate-blob"></div>
+  <div class="blob bg-sage-300/25 w-[480px] h-[480px] bottom-0 -right-32 animate-blob" style="animation-delay:-7s"></div>
+
+  <div class="container-edit relative">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-20 items-end reveal-stagger">
+      <div class="lg:col-span-7">
+        <span class="eyebrow reveal">Cómo lo estamos llevando a cabo</span>
+        <h2 class="reveal h-display mt-6 text-[clamp(2rem,4.4vw,3.6rem)] leading-[1.06]">
+          Cinco fases. <br/>
+          <em class="not-italic text-terracotta-500">Un mismo recorrido</em> compartido con la institución.
+        </h2>
+      </div>
+      <p class="lg:col-span-5 reveal text-lg text-ink-700 leading-relaxed">
+        El proyecto avanza por etapas claras y secuenciales. Cada una tiene su objetivo,
+        sus actividades y su momento. Puedes ver en qué fase estamos hoy
+        y explorar lo que ya hicimos y lo que viene.
+      </p>
+    </div>
+
+    <div class="reveal mt-12">
+      <Fases client:visible />
+    </div>
+  </div>
+</section>

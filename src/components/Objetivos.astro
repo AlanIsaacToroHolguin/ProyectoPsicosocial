@@ -1,0 +1,44 @@
+---
+const especificos = [
+  'Identificar los factores de riesgo psicosocial existentes en la institución.',
+  'Diseñar un mapa de riesgos psicosociales que permita visibilizar las problemáticas que afectan a la comunidad educativa.',
+  'Proponer estrategias de intervención de acuerdo con los riesgos detectados.',
+];
+---
+<section id="objetivos" class="relative bg-cream-50 py-24 md:py-32 grain">
+  <div class="blob bg-clay-300/30 w-[420px] h-[420px] top-10 -right-32 animate-blob"></div>
+
+  <div class="container-edit relative">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-20 items-start reveal-stagger">
+      <!-- Objetivo general -->
+      <div class="lg:col-span-7">
+        <span class="eyebrow reveal">Hacia dónde apuntamos</span>
+        <h2 class="reveal h-display mt-6 text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1.1]">
+          Nuestro objetivo general
+        </h2>
+        <p class="reveal mt-6 text-[19px] md:text-[22px] leading-[1.45] text-ink-800 font-serif">
+          Promover el <strong class="text-terracotta-500 font-normal">bienestar integral</strong> en la
+          comunidad educativa de la Institución Educativa Presbítero Antonio Baena Salazar
+          del municipio de Sabaneta durante el año <strong class="font-medium">2026</strong>.
+        </p>
+      </div>
+
+      <!-- Objetivos específicos -->
+      <div class="lg:col-span-5">
+        <div class="reveal rounded-3xl border border-cream-200 bg-cream-100 p-7 md:p-9">
+          <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Objetivos específicos</div>
+          <ol class="mt-5 space-y-5">
+            {especificos.map((o, i) => (
+              <li class="flex gap-4">
+                <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-terracotta-500/12 font-serif text-sm text-terracotta-500">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p class="text-[15px] leading-relaxed text-ink-800">{o}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+const items = [
+  {
+    title: 'Gestión emocional',
+    text:  'Cómo niños y adolescentes reconocen, nombran y atraviesan lo que sienten.',
+    icon:  'heart',
+  },
+  {
+    title: 'Convivencia escolar',
+    text:  'Los vínculos cotidianos: amistades, conflictos, sentido de pertenencia.',
+    icon:  'people',
+  },
+  {
+    title: 'Mundo digital y redes',
+    text:  'La huella emocional de las pantallas, ciberconvivencia y exposición.',
+    icon:  'wifi',
+  },
+  {
+    title: 'Resolución de conflictos',
+    text:  'Habilidades para dialogar, repararse y volver a encontrarse.',
+    icon:  'handshake',
+  },
+  {
+    title: 'Consumo de SPA',
+    text:  'Una mirada preventiva, sin estigmas, centrada en el cuidado.',
+    icon:  'leaf',
+  },
+  {
+    title: 'Bienestar estudiantil',
+    text:  'Salud emocional, descanso, motivación y proyecto de vida.',
+    icon:  'sun',
+  },
+  {
+    title: 'Familia y entorno',
+    text:  'Vínculos en casa, redes de apoyo, contextos socioeconómicos.',
+    icon:  'home',
+  },
+  {
+    title: 'Voz docente',
+    text:  'Quienes habitan el aula también necesitan ser escuchados.',
+    icon:  'mic',
+  },
+];
+
+const icons: Record<string, string> = {
+  heart: '<path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10z"/>',
+  people:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 20c0-2.2 2-4 4-4s4 1.8 4 4"/>',
+  wifi:  '<path d="M5 12a10 10 0 0 1 14 0"/><path d="M8.5 15a5 5 0 0 1 7 0"/><circle cx="12" cy="18" r="1.2"/>',
+  handshake:'<path d="M3 12l4-4 5 5 5-5 4 4-9 9z"/><path d="M8 13l4 4"/>',
+  leaf:  '<path d="M20 4c-9 0-14 5-14 12 0 2 1 4 4 4 7 0 12-6 12-14 0-1-1-2-2-2z"/><path d="M6 20l8-8"/>',
+  sun:   '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/>',
+  home:  '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+  mic:   '<rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>',
+};
+---
+<section id="observando" class="relative bg-cream-100 py-20 md:py-28 grain">
+  <div class="container-edit">
+    <div class="max-w-3xl reveal-stagger">
+      <span class="eyebrow reveal">¿Qué estamos observando?</span>
+      <h2 class="reveal h-display mt-6 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.08]">
+        Las dimensiones humanas <br/>
+        que <em class="not-italic text-terracotta-500">habitan la escuela</em>.
+      </h2>
+      <p class="reveal mt-6 text-lg text-ink-700 leading-relaxed">
+        No nos enfocamos en un solo síntoma. Miramos el conjunto: lo emocional, lo social,
+        lo familiar y lo cultural — porque la infancia y la adolescencia siempre suceden
+        dentro de un tejido más amplio.
+      </p>
+    </div>
+
+    <div class="reveal-stagger mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {items.map((it) => (
+        <article
+          class="reveal lift group relative overflow-hidden rounded-3xl border border-cream-200 bg-cream-50 p-7 hover:shadow-soft hover:border-clay-400/60"
+        >
+          <div class="absolute inset-0 -z-10 bg-gradient-to-br from-cream-50 via-cream-50 to-clay-300/15 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-terracotta-500/10 text-terracotta-500 transition-colors group-hover:bg-terracotta-500 group-hover:text-cream-50">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={icons[it.icon]}></svg>
+          </span>
+
+          <h3 class="mt-6 font-serif text-xl text-ink-900">{it.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-700/85">{it.text}</p>
+
+          <div class="mt-6 flex items-center gap-2 text-xs text-clay-600 uppercase tracking-[0.18em] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            Comprender <span class="h-px w-6 bg-clay-500"></span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
