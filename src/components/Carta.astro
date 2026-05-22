@@ -1,0 +1,63 @@
+---
+const bg = 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=2400&q=80';
+---
+<section id="carta" class="relative isolate overflow-hidden bg-cream-50 grain">
+  <!-- Imagen de fondo desaturada -->
+  <div class="absolute inset-0 -z-10">
+    <img
+      src={bg}
+      alt=""
+      aria-hidden="true"
+      class="h-full w-full object-cover opacity-[0.16]"
+      data-parallax="0.04"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-cream-50 via-cream-50/88 to-cream-50"></div>
+  </div>
+
+  <div class="blob bg-clay-300/35 w-[520px] h-[520px] -top-32 left-1/4 animate-blob"></div>
+  <div class="blob bg-sage-300/25 w-[420px] h-[420px] bottom-0 right-[-100px] animate-blob" style="animation-delay:-5s"></div>
+
+  <div class="container-edit relative flex min-h-[80svh] flex-col items-center justify-center py-28 md:py-36">
+    <div class="reveal-stagger max-w-2xl">
+      <span class="eyebrow reveal">Una carta abierta</span>
+
+      <h2 class="reveal h-display mt-8 text-[clamp(2rem,4vw,3rem)] leading-[1.1]">
+        Si llegaste hasta aquí, <br/>
+        <em class="not-italic text-terracotta-500">gracias por escucharnos</em>.
+      </h2>
+
+      <div class="reveal mt-10 space-y-6 text-[17px] md:text-[18px] leading-[1.75] text-ink-800 font-serif">
+        <p>
+          <strong class="font-medium text-ink-900">Latidos de la escuela</strong> es un modelo
+          de diagnóstico psicosocial pensado para acompañar a distintas instituciones
+          educativas. No hablamos de un experimento puntual: es una metodología probada,
+          replicable y adaptable al pulso particular de cada escuela.
+        </p>
+        <p>
+          Detrás de cada fase hay un equipo que cree, profundamente,
+          que escuchar a una escuela también es cuidar de su infancia.
+          Por eso diseñamos un proceso que se puede llevar a cualquier
+          comunidad educativa con el mismo respeto: entrar con cuidado,
+          quedarse a tiempo, y devolverle a la institución una lectura
+          honesta de lo que vive.
+        </p>
+        <p>
+          Si te imaginas este proceso dentro de tu institución,
+          conversemos. Ya hay un modelo listo para tejerse contigo.
+        </p>
+      </div>
+
+      <!-- firma sobria -->
+      <div class="reveal mt-14 flex items-center gap-4">
+        <span class="h-px w-12 bg-clay-400/70"></span>
+        <div>
+          <p class="text-[11px] uppercase tracking-[0.28em] text-clay-600">Con cariño</p>
+          <p class="mt-1 font-serif text-lg text-ink-900">
+            El equipo de Latidos de la escuela
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

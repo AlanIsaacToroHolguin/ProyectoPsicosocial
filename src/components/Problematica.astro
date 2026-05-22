@@ -1,0 +1,65 @@
+---
+const datos = [
+  {
+    n: '44%',
+    t: 'Estudiantes en riesgo',
+    d: 'Presentan dificultades escolares, problemas de convivencia, riesgo de deserción o afectaciones en sus relaciones personales.',
+  },
+  {
+    n: 'Silenciosos',
+    t: 'Factores no identificados',
+    d: 'Los riesgos psicosociales suelen operar de forma invisible hasta que se manifiestan como crisis individuales o institucionales.',
+  },
+  {
+    n: 'Tardías',
+    t: 'Respuestas reactivas',
+    d: 'Sin diagnóstico, las instituciones intervienen cuando el daño ya está instalado, no cuando puede ser prevenido.',
+  },
+];
+---
+<section id="problematica" class="relative bg-cream-50 py-24 md:py-32 grain">
+  <div class="blob bg-terracotta-500/25 w-[480px] h-[480px] -top-32 -left-32 animate-blob"></div>
+  <div class="blob bg-clay-300/30 w-[380px] h-[380px] bottom-0 right-[-100px] animate-blob" style="animation-delay:-5s"></div>
+
+  <div class="container-edit relative">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-20 items-start">
+      <div class="lg:col-span-7 reveal-stagger">
+        <span class="eyebrow reveal">La problemática</span>
+        <h2 class="reveal h-display mt-6 text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.05]">
+          Lo que no se nombra <br/>
+          en la escuela, <em class="not-italic text-terracotta-500">tampoco se cuida</em>.
+        </h2>
+        <p class="reveal mt-7 text-lg leading-relaxed text-ink-700">
+          En muchas instituciones, los factores que erosionan el bienestar de niñas, niños y
+          adolescentes permanecen invisibles para quienes podrían intervenirlos. La consecuencia
+          se traduce en bajo rendimiento, conflictos de convivencia, deserción y deterioro de las
+          relaciones dentro de la comunidad educativa.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="reveal relative rounded-[2rem] border border-terracotta-500/30 bg-cream-100 p-8 md:p-10 shadow-soft">
+          <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Dato que motiva el proyecto</div>
+          <div class="mt-3 font-serif text-[clamp(3rem,7vw,5rem)] leading-none text-terracotta-500 tabular-nums">
+            44,07<span class="text-3xl align-top">%</span>
+          </div>
+          <p class="mt-4 text-[15px] leading-relaxed text-ink-800">
+            de los estudiantes presentan dificultades escolares, problemas de convivencia,
+            deserción y afectaciones en sus relaciones personales, asociadas a factores de
+            riesgo psicosocial que <strong class="font-medium">aún no han sido identificados</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-stagger mt-14 grid gap-6 md:grid-cols-3">
+      {datos.map((d) => (
+        <article class="reveal rounded-3xl border border-cream-200 bg-cream-100 p-7">
+          <div class="font-serif text-3xl text-terracotta-500">{d.n}</div>
+          <h3 class="mt-4 font-serif text-xl text-ink-900">{d.t}</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-700/90">{d.d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -35,10 +35,10 @@ export default function HeroContent() {
   }, []);
 
   const stats = [
-    { v: useCountUp(8,   1400, ready), label: 'Semestre · Psicología', suffix: '°' },
-    { v: useCountUp(5,   1600, ready), label: 'Fases del recorrido',   suffix: '' },
-    { v: useCountUp(1,   1800, ready), label: 'Comunidad educativa',   suffix: '+' },
-    { v: useCountUp(100, 2200, ready), label: 'Voces reales',          suffix: '%' },
+    { v: useCountUp(44,  1400, ready), label: 'Estudiantes en riesgo psicosocial', suffix: '%' },
+    { v: useCountUp(3,   1600, ready), label: 'Técnicas participativas',           suffix: '' },
+    { v: useCountUp(5,   1800, ready), label: 'Fases de diagnóstico',              suffix: '' },
+    { v: useCountUp(100, 2200, ready), label: 'Enfoque centrado en la comunidad', suffix: '%' },
   ];
 
   return (
@@ -61,22 +61,22 @@ export default function HeroContent() {
           className="flex flex-wrap items-center gap-3"
         >
           <a
-            href="#fases"
+            href="#problematica"
             className="group inline-flex items-center gap-2.5 rounded-full border border-cream-50/25 bg-cream-50/10 py-1.5 pl-3 pr-2 text-[11px] tracking-[0.06em] text-cream-50 backdrop-blur-sm transition-all hover:bg-cream-50/15 hover:border-cream-50/40"
-            aria-label="Ver la fase actual del proyecto"
+            aria-label="Conocer la problemática que abordamos"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-terracotta-400 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-terracotta-400"></span>
             </span>
-            <span className="uppercase tracking-[0.16em] text-cream-100/85">Estamos en</span>
-            <span className="font-medium text-cream-50">Fase 02 · Exploración</span>
+            <span className="uppercase tracking-[0.16em] text-cream-100/85">Iniciativa profesional</span>
+            <span className="font-medium text-cream-50">Diagnóstico psicosocial escolar</span>
             <span className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cream-50/15 transition-colors group-hover:bg-terracotta-400/40">
               <svg className="h-2.5 w-2.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </span>
           </a>
           <span className="hidden sm:inline-flex eyebrow !text-clay-300">
-            Proyecto universitario · Sabaneta · Colombia
+            Bienestar integral · Comunidades educativas
           </span>
         </motion.div>
 
@@ -127,9 +127,10 @@ export default function HeroContent() {
           variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease, delay: 0.45 } } }}
           className="mt-7 max-w-xl text-lg md:text-xl leading-relaxed text-cream-100/85 font-light"
         >
-          Somos un equipo de estudiantes de psicología construyendo, junto a la
-          I.E. Presbítero Antonio Baena Salazar, un proyecto sobre los factores psicosociales
-          que habitan su comunidad educativa. Este es nuestro proceso.
+          Cerca del <strong className="text-cream-50 font-medium">44% de los estudiantes</strong> enfrenta
+          dificultades escolares, problemas de convivencia o riesgo de deserción asociados a factores
+          psicosociales que aún no han sido identificados en su institución. Este proyecto los hace
+          visibles para que puedan ser intervenidos.
         </motion.p>
 
         <motion.div
@@ -137,13 +138,13 @@ export default function HeroContent() {
           className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-5"
         >
           <motion.a
-            href="#proyecto"
+            href="#problematica"
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 320, damping: 22 }}
             className="btn-primary bg-cream-50 !text-ink-900 hover:!bg-terracotta-500 hover:!text-cream-50"
           >
-            Conocer el proceso
+            Conocer la propuesta
             <motion.svg
               className="h-3.5 w-3.5"
               viewBox="0 0 24 24"

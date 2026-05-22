@@ -29,7 +29,7 @@ const fases: Fase[] = [
     image:
       'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1600&q=80',
     accent: '#E07A5F',
-    status: 'done',
+    status: 'next',
     activities: [
       'Selección del instrumento de mapa de riesgos psicosociales.',
       'Adaptación del instrumento al contexto de la institución educativa.',
@@ -49,7 +49,7 @@ const fases: Fase[] = [
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80',
     accent: '#C28156',
-    status: 'current',
+    status: 'next',
     activities: [
       'Implementación del instrumento seleccionado.',
       'Recolección de información mediante cuestionarios estandarizados o escalas de medición.',
@@ -120,9 +120,9 @@ const fases: Fase[] = [
 ];
 
 const STATUS_LABEL: Record<Fase['status'], string> = {
-  done:    'Completada',
-  current: 'En curso',
-  next:    'Próxima',
+  done:    'Etapa',
+  current: 'Etapa',
+  next:    'Etapa',
 };
 
 export default function Fases() {

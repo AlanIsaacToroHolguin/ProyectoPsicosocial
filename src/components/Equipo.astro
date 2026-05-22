@@ -1,26 +1,25 @@
 ---
-// Edita estos integrantes con los datos reales de tu equipo.
+// Edita estos integrantes con los datos reales del equipo profesional.
 const equipo = [
-  { nombre: 'Integrante 1', rol: 'Coordinación general',     foco: 'Diseño metodológico y diálogo con la institución.',          img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80' },
-  { nombre: 'Integrante 2', rol: 'Trabajo con estudiantes',  foco: 'Facilitación de talleres y cartografía social participativa.',img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80' },
-  { nombre: 'Integrante 3', rol: 'Acompañamiento docente',   foco: 'Escucha activa con maestros y mural de situaciones.',         img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80' },
-  { nombre: 'Integrante 4', rol: 'Sistematización y análisis', foco: 'Lectura psicosocial de los hallazgos y construcción del mapa.', img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80' },
+  { nombre: 'Yuliana', foco: 'Facilitación de talleres pedagógicos y aplicación de cartografía social con la comunidad educativa.', img: '/members/MiPsicologa.jpg' },
+  { nombre: 'Sara',    foco: 'Espacios de escucha activa con estudiantes, docentes y familias para visibilizar lo no nombrado.',    img: '/members/2.jpeg' },
+  { nombre: 'Keidy',   foco: 'Diseño metodológico del proceso y construcción de los instrumentos del diagnóstico.',                 img: '/members/Keidy.jpeg' },
+  { nombre: 'Yulissa', foco: 'Lectura psicosocial de hallazgos y elaboración del mapa de riesgos psicosociales.',                   img: '/members/4.jpeg' },
 ];
 ---
 <section id="equipo" class="relative bg-cream-100 py-20 md:py-28 grain">
   <div class="container-edit">
     <div class="grid gap-10 lg:grid-cols-12 lg:gap-20 items-end">
       <div class="lg:col-span-7 reveal-stagger">
-        <span class="eyebrow reveal">Quiénes lo estamos llevando a cabo</span>
+        <span class="eyebrow reveal">Quiénes lideran el proyecto</span>
         <h2 class="reveal h-display mt-6 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.06]">
-          Un equipo pequeño, <br/>
+          Un equipo profesional, <br/>
           un compromiso <em class="not-italic text-terracotta-500">profundamente humano</em>.
         </h2>
       </div>
       <p class="lg:col-span-5 reveal text-lg leading-relaxed text-ink-700">
-        Somos estudiantes de octavo semestre de Psicología.
-        Cada integrante asume un rol dentro del proceso, pero todas las decisiones se toman juntos.
-        Detrás de cada fase del proyecto hay una persona real escuchando y sosteniendo el vínculo con la institución.
+        Diseñamos e implementamos un <strong class="text-ink-900 font-medium">diagnóstico psicosocial</strong>
+        que hace visible la red de factores de riesgo y protección que opera dentro de las comunidades educativas.
       </p>
     </div>
 
@@ -31,8 +30,7 @@ const equipo = [
             <img src={p.img} alt={p.nombre} class="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-ink-900/75 via-ink-900/0 to-transparent"></div>
             <div class="absolute bottom-5 left-5 right-5 text-cream-50">
-              <div class="text-[10px] uppercase tracking-[0.22em] text-clay-300">{p.rol}</div>
-              <div class="mt-1 font-serif text-xl">{p.nombre}</div>
+              <div class="font-serif text-xl">{p.nombre}</div>
             </div>
           </div>
           <div class="p-6">
@@ -42,54 +40,21 @@ const equipo = [
       ))}
     </div>
 
-    <!-- Aliados: equipo psicosocial ampliado -->
-    <div class="reveal mt-14 rounded-[2rem] border border-cream-200 bg-cream-50 p-8 md:p-10">
-      <div class="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
-        <div class="md:col-span-5">
-          <span class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Equipo psicosocial ampliado</span>
-          <h3 class="mt-3 font-serif text-2xl leading-tight text-ink-900">
-            No caminamos solos: <br/>esta es una red institucional.
-          </h3>
-          <p class="mt-4 text-[15px] leading-relaxed text-ink-700">
-            El equipo de psicología trabaja junto a aliados de la institución y la administración municipal.
-            Entre todos planeamos, orientamos, recolectamos información y acompañamos el proceso.
-          </p>
-        </div>
-        <div class="md:col-span-7">
-          <ul class="grid gap-4 sm:grid-cols-2">
-            {[
-              ['Psicólogo institucional',        'Acompañamiento permanente del proceso desde la institución.'],
-              ['Psicólogo · Secretaría de Salud','Apoyo técnico desde la administración municipal de Sabaneta.'],
-              ['Docente orientadora',            'Puente entre el equipo y la comunidad de estudiantes y familias.'],
-              ['Docentes vinculados',            'Aliados en aula que sostienen los espacios participativos.'],
-            ].map(([t, d]) => (
-              <li class="rounded-2xl border border-cream-200 bg-cream-100 p-4">
-                <div class="font-medium text-ink-900 text-[15px]">{t}</div>
-                <div class="mt-1 text-[13.5px] text-ink-700/85 leading-snug">{d}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banda informativa: institución / tiempo / población / recursos -->
-    <div class="reveal mt-8 grid gap-6 rounded-[2rem] border border-cream-200 bg-cream-50 p-8 md:grid-cols-4 md:p-10">
-      <div class="md:col-span-2">
-        <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Institución acompañada</div>
-        <div class="mt-2 font-serif text-2xl leading-tight text-ink-900">
-          I.E. Presbítero Antonio Baena Salazar
-        </div>
-        <div class="mt-1 text-sm text-ink-700/80">Sabaneta, Antioquia · Colombia</div>
+    <!-- Banda informativa: alcance / aplicabilidad / población -->
+    <div class="reveal mt-14 grid gap-6 rounded-[2rem] border border-cream-200 bg-cream-50 p-8 md:grid-cols-3 md:p-10">
+      <div>
+        <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Alcance</div>
+        <div class="mt-2 font-serif text-lg text-ink-900">Instituciones educativas</div>
+        <div class="mt-1 text-sm text-ink-700/80">Públicas, privadas y mixtas, urbanas o rurales.</div>
       </div>
       <div>
-        <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Tiempo del proyecto</div>
-        <div class="mt-2 font-serif text-lg text-ink-900">Primer semestre · 2026</div>
-        <div class="mt-1 text-sm text-ink-700/80">Práctica académica · 8° semestre Psicología</div>
+        <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Aplicabilidad</div>
+        <div class="mt-2 font-serif text-lg text-ink-900">Metodología replicable</div>
+        <div class="mt-1 text-sm text-ink-700/80">Adaptable al contexto y escala de cada institución.</div>
       </div>
       <div>
         <div class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Población</div>
-        <div class="mt-2 text-sm text-ink-700">Niñez, adolescencia, docentes y familias de la comunidad educativa.</div>
+        <div class="mt-2 text-sm text-ink-700">Estudiantes, docentes, directivos y familias que conforman la comunidad educativa.</div>
       </div>
     </div>
   </div>

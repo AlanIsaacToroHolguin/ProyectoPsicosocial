@@ -4,41 +4,47 @@ import MetodologiaCard from './MetodologiaCard.tsx';
 const techniques = [
   {
     name: 'Cartografía social participativa',
-    desc: 'Los estudiantes representan su percepción del entorno escolar mediante la elaboración de un mapa, ubicando situaciones, espacios y dinámicas relevantes de la institución.',
-    // Fuente: https://unsplash.com/es/fotos/wusOJ-2uY6w
-    img:  'https://unsplash.com/photos/wusOJ-2uY6w/download?force=true&w=1400',
+    desc: 'A partir de una cartografía construida colectivamente, los estudiantes observan el mapa de la institución y ubican símbolos sobre situaciones, espacios y dinámicas que marcan su vida escolar.',
+    img:  '/actividades/ninos.jpeg',
     tag:  'Mirar el territorio',
-    objective:  'Identificar los factores de riesgo desde la percepción de la comunidad educativa.',
-    population: 'Miembros de la comunidad educativa, principalmente estudiantes.',
+    objective:  'Identificar situaciones, espacios y dinámicas importantes dentro de la institución a partir de la observación y análisis de la cartografía social construida colectivamente.',
+    population: 'Estudiantes de la comunidad educativa, organizados en grupos con un líder por equipo.',
     moments: [
-      'Organización de los grupos de trabajo, promoviendo intercambio de ideas.',
-      'Entrega del material: un plano sencillo de la institución por grupo.',
-      'Identificación y ubicación de espacios: zonas de riesgo, zonas seguras y espacios de convivencia positiva.',
-      'Construcción colectiva del mapa con las dinámicas observadas.',
-      'Socialización: cada grupo presenta su mapa y reflexiona con los demás.',
+      'Encuadre: se explica el propósito y se invita a observar la cartografía ya construida para reconocer lugares y situaciones de la vida escolar.',
+      'Acuerdos para participar: participar con respeto, escuchar al otro, no mencionar nombres, expresar desde la experiencia y cuidar el material.',
+      'Conformación de grupos y elección de un líder responsable por equipo.',
+      'Ubicación de símbolos sobre el mapa, guiados por preguntas en cuatro ejes: colegio (conflictos, espacios que generan miedo o estrés), académico (ansiedad, apoyo docente), familiar (problemas que afectan a los estudiantes) y social (barrio, entorno, lugares asociados a consumo o violencia).',
+      'Cierre reflexivo: cómo se sintieron, qué fue lo más importante que identificaron y calificación de la actividad del 1 al 10.',
     ],
-    resources: ['Cartulinas', 'Marcadores', 'Stickers'],
+    resources: [
+      'Cartografía base de la institución',
+      'Símbolos o stickers para ubicar situaciones',
+      'Marcadores y lápices',
+      'Guía de preguntas orientadoras',
+      'Hoja de acuerdos de participación',
+    ],
     time: [
-      'Explicación · 10 min',
-      'Desarrollo en grupos · 30–40 min',
-      'Socialización · 20 min',
+      'Encuadre y acuerdos · 10 min',
+      'Trabajo en grupos · 30–40 min',
+      'Socialización · 15 min',
+      'Cierre y calificación · 10 min',
     ],
-    result: 'Identificación visual de riesgos psicosociales presentes en los espacios de la institución.',
-    risks:  ['Baja participación', 'Ubicación poco clara de espacios', 'Interpretaciones distintas', 'Limitaciones de tiempo'],
+    result: 'Lectura visual y colectiva de los factores de riesgo y protección que atraviesan la vida escolar, reconociendo tanto situaciones que afectan el bienestar como dinámicas que fortalecen la convivencia.',
+    risks:  ['Baja participación', 'Mencionar nombres propios', 'Interpretaciones distintas entre grupos', 'Limitaciones de tiempo'],
   },
   {
     name: 'Mural de situaciones',
-    desc: 'Los estudiantes expresan a través de representaciones gráficas y escritas las situaciones que viven en su entorno escolar, construyendo significados colectivos.',
-    img:  '/mural.png',
-    tag:  'Hacer visible lo invisible',
-    objective:  'Identificar situaciones, experiencias y problemáticas presentes en la comunidad educativa.',
-    population: 'Miembros de la comunidad educativa, principalmente estudiantes.',
+    desc: 'Los docentes expresan, desde su sensibilidad y percepción personal de la institución, las situaciones que observan en la vida escolar y en su propio entorno laboral, construyendo una lectura colectiva del entorno.',
+    img:  '/actividades/docentes.jpeg',
+    tag:  'La mirada sensible del docente',
+    objective:  'Recoger la percepción personal y sensible de los docentes sobre las situaciones que atraviesan la comunidad educativa.',
+    population: 'Docentes de la institución educativa.',
     moments: [
       'Adecuación del espacio donde se construirá el mural (pared o cartelera).',
-      'Expresión individual mediante dibujos, palabras o frases.',
-      'Socialización en pequeños grupos para dialogar y reflexionar.',
-      'Construcción colectiva: cada grupo plasma una propuesta conjunta.',
-      'Elaboración del mural final con la integración de las producciones grupales.',
+      'Expresión individual de cada docente mediante dibujos, palabras o frases que reflejen su percepción personal de la institución.',
+      'Socialización en pequeños grupos para dialogar y contrastar las miradas sensibles de cada docente.',
+      'Construcción colectiva: cada grupo de docentes plasma una propuesta conjunta a partir de lo compartido.',
+      'Elaboración del mural final con la integración de las producciones grupales del equipo docente.',
     ],
     resources: ['Papelógrafos o cartulina grande', 'Marcadores', 'Colores y lápices', 'Cinta o pegante', 'Hojas blancas', 'Revistas (opcional)'],
     time: [
@@ -47,13 +53,13 @@ const techniques = [
       'Trabajo grupal · 25–30 min',
       'Socialización · 20 min',
     ],
-    result: 'Mural colectivo que refleja experiencias y percepciones, visibilizando aspectos que influyen en el bienestar de la comunidad.',
-    risks:  ['Baja participación', 'Dificultad para expresar ideas', 'Desorganización grupal', 'Limitaciones de tiempo'],
+    result: 'Mural colectivo que refleja la percepción sensible y personal de los docentes sobre la institución, visibilizando aspectos que influyen en el bienestar de la comunidad.',
+    risks:  ['Baja participación del equipo docente', 'Dificultad para expresar percepciones personales', 'Desorganización grupal', 'Limitaciones de tiempo'],
   },
   {
     name: 'Taller pedagógico',
     desc: 'Encuentros guiados de reflexión e intercambio de experiencias entre los participantes, orientados a identificar situaciones relevantes del contexto institucional.',
-    img:  '/taller.png',
+    img:  '/actividades/overview.jpeg',
     tag:  'Aprender juntos',
     objective:  'Identificar percepciones y situaciones de la comunidad educativa mediante el trabajo colaborativo.',
     population: 'Miembros de la comunidad educativa.',
@@ -77,14 +83,15 @@ const techniques = [
 <section id="metodologias" class="relative bg-cream-100 py-20 md:py-28 grain">
   <div class="container-edit">
     <div class="max-w-3xl reveal-stagger">
-      <span class="eyebrow reveal">Las herramientas que usamos</span>
+      <span class="eyebrow reveal">Metodología</span>
       <h2 class="reveal h-display mt-5 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.08]">
         Tres técnicas participativas, <br/>
-        un mismo principio: <em class="not-italic text-terracotta-500">investigar con la escuela</em>.
+        un mismo principio: <em class="not-italic text-terracotta-500">investigar con la comunidad</em>.
       </h2>
       <p class="reveal mt-5 text-lg text-ink-700 leading-relaxed">
-        Cada técnica tiene su propio objetivo, momentos, recursos y tiempos.
-        Aquí compartimos cómo las aplicamos paso a paso para que el proceso sea transparente.
+        Cartografía social, mural de situaciones y talleres pedagógicos. Cada técnica
+        tiene un objetivo definido, momentos, recursos y tiempos. Compartimos su aplicación
+        paso a paso para garantizar transparencia metodológica y replicabilidad.
       </p>
     </div>
 

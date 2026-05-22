@@ -1,63 +1,102 @@
 ---
 const bg = 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=2400&q=80';
+
+const inversion = [
+  ['Equipo de psicología', 'Contratación del talento profesional que aplica, sistematiza y devuelve el diagnóstico.'],
+  ['Materiales técnicos',  'Insumos para cartografía social, mural de situaciones y talleres pedagógicos.'],
+  ['Sistematización',      'Análisis, mapa de riesgos y entrega de hallazgos accionables a la institución.'],
+];
 ---
-<section id="carta" class="relative isolate overflow-hidden bg-cream-50 grain">
+<section id="propuesta" class="relative isolate overflow-hidden bg-cream-50 grain">
   <!-- Imagen de fondo desaturada -->
   <div class="absolute inset-0 -z-10">
     <img
       src={bg}
       alt=""
       aria-hidden="true"
-      class="h-full w-full object-cover opacity-[0.16]"
+      class="h-full w-full object-cover opacity-[0.14]"
       data-parallax="0.04"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-cream-50 via-cream-50/88 to-cream-50"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-cream-50 via-cream-50/90 to-cream-50"></div>
   </div>
 
   <div class="blob bg-clay-300/35 w-[520px] h-[520px] -top-32 left-1/4 animate-blob"></div>
   <div class="blob bg-sage-300/25 w-[420px] h-[420px] bottom-0 right-[-100px] animate-blob" style="animation-delay:-5s"></div>
 
-  <div class="container-edit relative flex min-h-[80svh] flex-col items-center justify-center py-28 md:py-36">
-    <div class="reveal-stagger max-w-2xl">
-      <span class="eyebrow reveal">Una carta abierta</span>
+  <div class="container-edit relative py-24 md:py-32">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-20 items-start">
+      <!-- Propuesta de valor -->
+      <div class="lg:col-span-7 reveal-stagger">
+        <span class="eyebrow reveal">Propuesta de valor</span>
+        <h2 class="reveal h-display mt-6 text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.06]">
+          Una inversión que <br/>
+          se traduce en <em class="not-italic text-terracotta-500">comunidades educativas más seguras</em>.
+        </h2>
 
-      <h2 class="reveal h-display mt-8 text-[clamp(2rem,4vw,3rem)] leading-[1.1]">
-        Si llegaste hasta aquí, <br/>
-        <em class="not-italic text-terracotta-500">gracias por escucharnos</em>.
-      </h2>
-
-      <div class="reveal mt-10 space-y-6 text-[17px] md:text-[18px] leading-[1.75] text-ink-800 font-serif">
-        <p>
-          Este proyecto apenas empieza a tejerse. Lo que aquí compartimos
-          no es un resultado, es un proceso vivo — con sus avances, sus
-          pausas y sus aprendizajes.
-        </p>
-        <p>
-          Detrás de cada fase hay un equipo pequeño que cree, profundamente,
-          que escuchar a una escuela también es cuidar de su infancia.
-          Y que la única manera de comprenderla es entrar con respeto,
-          quedarse a tiempo, y devolverle a la comunidad lo que la comunidad
-          misma nos ha enseñado.
-        </p>
-        <p>
-          Si algo de lo que leíste te conmovió, ya formas parte de esto.
-        </p>
-      </div>
-
-      <!-- firma sobria -->
-      <div class="reveal mt-14 flex items-center gap-4">
-        <span class="h-px w-12 bg-clay-400/70"></span>
-        <div>
-          <p class="text-[11px] uppercase tracking-[0.28em] text-clay-600">Con cariño</p>
-          <p class="mt-1 font-serif text-lg text-ink-900">
-            El equipo de psicología · Octavo semestre
+        <div class="reveal mt-8 space-y-5 text-[17px] leading-relaxed text-ink-800">
+          <p>
+            Cada institución que diagnostica a tiempo deja de reaccionar a la crisis y empieza a
+            prevenirla. Eso significa menos deserción, mejor convivencia, vínculos más sanos y
+            trayectorias educativas más sostenibles para niñas, niños y adolescentes.
           </p>
-          <p class="mt-0.5 text-sm text-ink-700/80">
-            I.E. Presbítero Antonio Baena Salazar · Sabaneta · 2026
+          <p>
+            Apoyar este proyecto es habilitar la base sobre la cual cualquier intervención
+            posterior puede construirse con pertinencia, rigor y evidencia.
           </p>
         </div>
+
+        <div class="reveal mt-10 flex flex-wrap items-center gap-4">
+          <a href="mailto:contacto@latidosdelaescuela.co" class="btn-primary">
+            Conversemos sobre una alianza
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#proyecto" class="btn-ghost">
+            Revisar la propuesta completa
+          </a>
+        </div>
       </div>
+
+      <!-- Inversión -->
+      <div class="lg:col-span-5">
+        <div class="reveal rounded-[2rem] border border-terracotta-500/30 bg-cream-100 p-8 md:p-10 shadow-soft">
+          <span class="text-[10px] uppercase tracking-[0.22em] text-clay-600">Lo que habilita la inversión</span>
+          <h3 class="mt-3 font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] leading-tight text-ink-900">
+            Una intervención completa por institución acompañada.
+          </h3>
+          <p class="mt-4 text-[14.5px] leading-relaxed text-ink-700">
+            Cubre la contratación del equipo de psicología y los materiales requeridos para la
+            aplicación de las técnicas participativas, desde el diseño metodológico hasta la
+            entrega del mapa de riesgos.
+          </p>
+
+          <ul class="mt-7 space-y-4">
+            {inversion.map(([t, d]) => (
+              <li class="flex gap-4">
+                <span class="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-terracotta-500"></span>
+                <div>
+                  <div class="font-medium text-ink-900 text-[14.5px]">{t}</div>
+                  <div class="mt-0.5 text-[13.5px] text-ink-700/85 leading-snug">{d}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-8 rounded-2xl bg-cream-50 p-4 text-[13px] leading-snug text-ink-700/85">
+            <span class="font-medium text-ink-900">Modelo escalable:</span> la propuesta puede
+            replicarse o ajustarse al número de instituciones y la magnitud del territorio que
+            el aliado desee impactar.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cita final -->
+    <div class="reveal mt-20 max-w-3xl">
+      <p class="font-serif text-[clamp(1.4rem,2.4vw,2rem)] leading-snug text-ink-900">
+        "Identificar a tiempo es la primera forma de cuidar.
+        <em class="not-italic text-terracotta-500">Diagnosticar bien es habilitar todo lo que viene después.</em>"
+      </p>
     </div>
   </div>
 </section>
