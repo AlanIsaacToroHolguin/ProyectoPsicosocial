@@ -50,44 +50,128 @@
    .reveal               → fade + lift
    .reveal-mask          → clip-path text mask reveal
    .reveal-left/right    → directional
+   .reveal-blur          → subtle blur-to-clarity
+   .reveal-scale         → soft scale-in
    .reveal-stagger > *   → automatic stagger via --i index
    ────────────────────────────────────────────────────────── */
 :root {
   --ease-out: cubic-bezier(.22, .61, .36, 1);
   --ease-soft: cubic-bezier(.2, .7, .2, 1);
+  --ease-emph: cubic-bezier(.16, 1, .3, 1);
 }
 
 .reveal,
 .reveal-left,
 .reveal-right,
-.reveal-mask {
+.reveal-mask,
+.reveal-blur,
+.reveal-scale {
   opacity: 0;
-  will-change: opacity, transform, clip-path;
+  will-change: opacity, transform, filter, clip-path;
   transition:
-    opacity   1.1s var(--ease-out),
-    transform 1.1s var(--ease-out),
-    clip-path 1.3s var(--ease-out);
+    opacity   1.1s var(--ease-emph),
+    transform 1.2s var(--ease-emph),
+    filter    1.1s var(--ease-emph),
+    clip-path 1.3s var(--ease-emph);
 }
-.reveal        { transform: translateY(32px); }
-.reveal-left   { transform: translateX(-36px); }
-.reveal-right  { transform: translateX(36px); }
+.reveal        { transform: translateY(36px); }
+.reveal-left   { transform: translateX(-38px); }
+.reveal-right  { transform: translateX(38px); }
 .reveal-mask {
-  transform: translateY(20px);
+  transform: translateY(22px);
   clip-path: inset(0 0 100% 0);
 }
+.reveal-blur   { transform: translateY(24px); filter: blur(10px); }
+.reveal-scale  { transform: translateY(18px) scale(.965); }
 
 .reveal.is-visible,
 .reveal-left.is-visible,
 .reveal-right.is-visible,
-.reveal-mask.is-visible {
+.reveal-mask.is-visible,
+.reveal-blur.is-visible,
+.reveal-scale.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
   clip-path: inset(0 0 0 0);
 }
 
 /* Auto stagger: child element gets delay based on its DOM index (--i set by JS) */
 .reveal-stagger > * {
   transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* Softer, tighter on small screens (smaller travel, faster, less heavy) */
+@media (max-width: 640px) {
+  .reveal       { transform: translateY(22px); }
+  .reveal-left  { transform: translateX(-22px); }
+  .reveal-right { transform: translateX(22px); }
+  .reveal-blur  { transform: translateY(16px); filter: blur(6px); }
+  .reveal-scale { transform: translateY(12px) scale(.975); }
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-mask,
+  .reveal-blur,
+  .reveal-scale {
+    transition-duration: .9s;
+  }
+  .reveal-stagger > * { transition-delay: calc(var(--i, 0) * 70ms); }
+}
+
+/* Scroll progress bar (top of page) */
+#scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 60;
+  background: linear-gradient(90deg, #C9624B, #E89E5C 60%, #C9624B);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform .12s linear, opacity .3s ease;
+  pointer-events: none;
+  opacity: .9;
+}
+
+/* Section-anchored scroll fade (set via data-scroll-fade) */
+[data-scroll-fade] {
+  --scroll-fade: 1;
+  opacity: var(--scroll-fade);
+  transition: opacity .25s linear;
+  will-change: opacity;
+}
+
+/* Back-to-top floating button */
+#back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background-color: #1A1410;
+  color: #FDFBF7;
+  box-shadow: 0 16px 40px -16px rgba(0,0,0,.45);
+  opacity: 0;
+  transform: translateY(14px) scale(.9);
+  pointer-events: none;
+  transition: opacity .35s var(--ease-emph), transform .45s var(--ease-emph), background-color .25s ease;
+}
+#back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+#back-to-top:hover { background-color: #C9624B; }
+@media (min-width: 768px) {
+  #back-to-top { bottom: 2rem; right: 2rem; width: 48px; height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #back-to-top { transition: opacity .2s linear; transform: none; }
 }
 
 /* Subtle hover-lift card behaviour, reused everywhere */
@@ -99,13 +183,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-left, .reveal-right, .reveal-mask {
+  .reveal, .reveal-left, .reveal-right, .reveal-mask, .reveal-blur, .reveal-scale {
     transition: none !important;
     transform: none !important;
+    filter: none !important;
     clip-path: none !important;
     opacity: 1 !important;
   }
   .animate-blob, .animate-float { animation: none !important; }
+  #scroll-progress { display: none; }
+  [data-scroll-fade] { opacity: 1 !important; }
 }
 
 /* Organic blob backgrounds */

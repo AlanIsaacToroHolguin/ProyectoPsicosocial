@@ -23,11 +23,18 @@ const {
     <title>{title}</title>
   </head>
   <body class="overflow-x-hidden">
+    <div id="scroll-progress" aria-hidden="true"></div>
     <Nav />
     <main>
       <slot />
     </main>
     <Footer />
+
+    <button id="back-to-top" type="button" aria-label="Volver al inicio" class="group">
+      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
 
     <script>
       // ── Auto-stagger: assign --i to each child of .reveal-stagger ──
@@ -71,15 +78,67 @@ const {
         onScroll();
       }
 
-      // Nav background change on scroll
+      // Nav background change on scroll + scroll progress bar
       const nav = document.getElementById('site-nav');
+      const progress = document.getElementById('scroll-progress');
       const onScroll = () => {
-        if (!nav) return;
-        if (window.scrollY > 24) nav.classList.add('is-scrolled');
-        else nav.classList.remove('is-scrolled');
+        if (nav) {
+          if (window.scrollY > 24) nav.classList.add('is-scrolled');
+          else nav.classList.remove('is-scrolled');
+        }
+        if (progress) {
+          const max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+          const ratio = Math.min(1, Math.max(0, window.scrollY / max));
+          progress.style.transform = `scaleX(${ratio})`;
+        }
       };
-      window.addEventListener('scroll', onScroll, { passive: true });
+      let progTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!progTicking) {
+          requestAnimationFrame(() => { onScroll(); progTicking = false; });
+          progTicking = true;
+        }
+      }, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
       onScroll();
+
+      // ── Back-to-top button ──
+      const backBtn = document.getElementById('back-to-top');
+      if (backBtn) {
+        const toggleBack = () => {
+          const trigger = window.innerHeight * 1.5;
+          backBtn.classList.toggle('is-visible', window.scrollY > trigger);
+        };
+        window.addEventListener('scroll', toggleBack, { passive: true });
+        backBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        toggleBack();
+      }
+
+      // ── Scroll-anchored fade: opacity follows element position in viewport ──
+      const fadeEls = document.querySelectorAll<HTMLElement>('[data-scroll-fade]');
+      if (fadeEls.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const updateFades = () => {
+          const vh = window.innerHeight;
+          fadeEls.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            const center = r.top + r.height / 2;
+            // peaks at viewport center, fades toward edges
+            const dist = Math.abs(center - vh / 2) / (vh / 1.4);
+            const op = Math.max(0.35, 1 - dist * 0.9);
+            el.style.setProperty('--scroll-fade', String(op));
+          });
+        };
+        let fadeTicking = false;
+        window.addEventListener('scroll', () => {
+          if (!fadeTicking) {
+            requestAnimationFrame(() => { updateFades(); fadeTicking = false; });
+            fadeTicking = true;
+          }
+        }, { passive: true });
+        updateFades();
+      }
     </script>
   </body>
 </html>
